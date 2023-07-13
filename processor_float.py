@@ -68,7 +68,7 @@ def lottery(pkList, idList):
             num.append(pkList[star] // 150)
             lotteryList[star] = num
     
-    with open('0527lottery.csv', 'w', encoding='utf-8-sig') as f:
+    with open('./intermediate/0527lottery.csv', 'w', encoding='utf-8-sig') as f:
         writer = csv.writer(f)
         writer.writerow(header)
         for l in lotteryList:
@@ -85,7 +85,7 @@ def polariod_lottery(pkList, idList):
 
             lotteryList[star] = pkList[star] // 300
     
-    with open('0527_polariod_lottery.csv', 'w', encoding='utf-8-sig') as f:
+    with open('./intermediate/0527_polariod_lottery.csv', 'w', encoding='utf-8-sig') as f:
         writer = csv.writer(f)
         writer.writerow(header)
         for l in lotteryList:
@@ -103,7 +103,7 @@ def photo_lottery(pkList, idList):
 
             lotteryList[star] = pkList[star] // 150
     
-    with open('0527_photo_lottery.csv', 'w', encoding='utf-8-sig') as f:
+    with open('./intermediate/0527_photo_lottery.csv', 'w', encoding='utf-8-sig') as f:
         writer = csv.writer(f)
         writer.writerow(header)
         for l in lotteryList:
