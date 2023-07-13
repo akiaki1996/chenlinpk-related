@@ -53,7 +53,7 @@ def cleanData(data):
             pkList[row[1][2]] = float(row[1][0])
             
            
-    lottery(pkList, idList)
+    photo_lottery(pkList, idList)
     
     return pkList, idList
 
@@ -75,7 +75,44 @@ def lottery(pkList, idList):
             data = [l, lotteryList[l], idList[l], pkList[l]]
             
             writer.writerow(data)
+def polariod_lottery(pkList, idList):
+    lotteryList = {} #tele, number
+    header = ['tele', 'numbers', 'id', 'money']
+    for star in pkList:
+        
+        #print(pkList[star])
+        if(pkList[star] // 300 > 0):
+
+            lotteryList[star] = pkList[star] // 300
     
+    with open('0527_polariod_lottery.csv', 'w', encoding='utf-8-sig') as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        for l in lotteryList:
+            data = [l, lotteryList[l], idList[l], pkList[l]]
+            
+            writer.writerow(data)
+
+def photo_lottery(pkList, idList):
+    lotteryList = {} #tele, number
+    header = ['tele', 'numbers', 'id', 'money']
+    for star in pkList:
+        
+        #print(pkList[star])
+        if(pkList[star] // 150 > 0):
+
+            lotteryList[star] = pkList[star] // 150
+    
+    with open('0527_photo_lottery.csv', 'w', encoding='utf-8-sig') as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        for l in lotteryList:
+            data = [l, lotteryList[l], idList[l], pkList[l]]
+            
+            writer.writerow(data)
+
+
+
 
 if __name__=='__main__':
     data = pd.read_csv(r'files/0527pk.csv', sep=',', header=0, names=['money', 'name', 'tele'], encoding = 'utf-8')
