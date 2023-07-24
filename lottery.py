@@ -199,5 +199,29 @@ def basic300r():
         for row in lottery.items():
             writer.writerow(row)
 
+def sunny():
+    lottery = {}
+    memo = set()
+    total = 0
+    df = pd.read_csv('./files/0723cl.csv', encoding='utf-8', header = 0)
+    for row in df.iterrows():
+        if row[1]['money'] >= 200:
+            total = total + 1
+    for row in df.iterrows():
+        #print(lottery)
+        if row[1]['money'] >= 200:
+            while(True):
+                temp = random.randint(1, total + 1)
+                if temp not in memo:
+                    #print(lottery)
+                    memo.add(temp) 
+                    lottery[row[1]['id']] = temp
+                    break
+    print(lottery)
+    with open('./results/0723_numbers.csv', 'w', newline='', encoding='utf-8-sig') as f:
+        writer = csv.writer(f)
+        for row in lottery.items():
+            writer.writerow(row)
+
 if __name__=='__main__':
-    basic300r()
+    sunny()
